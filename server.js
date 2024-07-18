@@ -3,7 +3,8 @@ const app = express();
 const db = require('./db.js');
 const bodyParser = require('body-parser')
 app.use(bodyParser.json()); //req.body
-
+require('dotenv').config();
+const PORT = process.env.PORT;
 
 app.get('/', function (req, res) {
   res.send('HI! Welcome to Our Hotel')
@@ -15,6 +16,6 @@ const menuRouter   = require('./routes/menuRouter');
 app.use('/person',Personroutes);
 app.use('/menu',menuRouter);
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log('Server Running');
 })
